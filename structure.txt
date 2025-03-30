@@ -1,0 +1,25 @@
+/audio_service
+│── /app
+│   │── /api
+│   │   │── /routes
+│   │   │   │── auth.py        # Авторизация через Яндекс
+│   │   │   │── users.py       # Управление пользователями
+│   │   │   │── files.py       # Работа с аудиофайлами
+│   │   │── api_router.py      # Основной роутер API
+│   │── /core
+│   │   │── config.py          # Конфигурация проекта
+│   │   │── security.py        # Генерация токенов
+│   │── /db
+│   │   │── base.py            # Подключение к БД
+│   │   │── models.py          # SQLAlchemy модели
+│   │   │── crud.py            # CRUD-операции
+│   │── /services
+│   │   │── yandex_auth.py     # Авторизация через Яндекс
+│   │── main.py                # Точка входа
+│── /uploads                   # Папка для хранения файлов
+│── /migrations                 # Миграции Alembic
+│── .env                        # Настройки проекта
+│── Dockerfile                  # Сборка контейнера
+│── docker-compose.yml          # Конфигурация Docker
+│── requirements.txt            # Зависимости проекта
+│── README.md                   # Инструкции по запуску
