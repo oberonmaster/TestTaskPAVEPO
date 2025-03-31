@@ -1,12 +1,21 @@
-from sqlalchemy import Column
-from sqlalchemy import String
-from sqlalchemy import Integer
-from fastapi_asyncalchemy.db.base import Base
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
+Base = declarative_base()
 
-class City(Base):
-    __tablename__ = "cities"
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True)
+    name = Column(String)
+    is_superuser = Column(Integer, default=0)
 
-    id = Column(Integer, autoincrement=True, primary_key=True, index=True)
-    name = Column(String, unique=True)
-    population = Column(Integer)
+class AudioFile(Base):
+    __tablename__ = "audio_files"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    filename = Column(String)
+    path = Column(String)
+
+    user = relationship("User")
